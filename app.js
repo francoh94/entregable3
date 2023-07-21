@@ -10,9 +10,14 @@ const manager = new ProductManager(productosJSONPath);
 
 app.get("/products", async (request, response) => {
   const productos = await manager.getProducts();
-  const limit = request.query;
-  response.send({ message: "Todos los productos:", productos, limit });
+  const limit = parseInt(request.query.limit);
+
+  const result = limit ? productos.slice(0, limit) : productos;
+
+  response.send({ message: "Todos los productos:", data: result });
 });
+
+
 
 
 app.get("/products/:pid", async (request, response) => {
