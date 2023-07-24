@@ -83,10 +83,7 @@ const producto1 = {
   code: "abc123",
   stock: 25,
 };
-//modifico2 = {
-//  price: "1500",
-//  stock: 15,
-//};
+
 async function simuladorProductos() {
   const manager = new ProductManager("productos.json");
   await manager.addProduct(producto1);
@@ -95,7 +92,7 @@ async function simuladorProductos() {
   const productoId = await manager.getProductById();
   console.log(productoId);
   await manager.deleteUser(1);
-  //await manager.updateUser(2, modifico2);
+  await manager.updateUser(2, modifico2);
 }
-simuladorProductos();
+
 export default ProductManager;
